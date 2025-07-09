@@ -54,7 +54,7 @@ const categories = [
 
 const ListSection = () => {
   return (
-    <section className="w-full h-screen bg-third-primary py-16 px-4 border-b border-gray-100">
+    <section className="w-full h-screen bg-third-primary py-16 px-4 border-b border-gray-300">
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-16">
         {/* Heading */}
         <div className="text-primary text-center">
@@ -66,14 +66,14 @@ const ListSection = () => {
         </div>
 
         {/* Categories */}
-        <div className="flex flex-wrap justify-center gap-12 md:gap-16 lg:gap-20">
+        <div className="flex flex-wrap justify-center gap-12 md:gap-18 lg:gap-24">
           {categories.map((category, index) => (
             <a
               key={index}
               href={category.href}
               className="group flex flex-col items-center text-center transition-transform duration-300"
             >
-              <div className="w-28 h-28 sm:w-40 sm:h-40 md:w-60 md:h-60 lg:w-72 lg:h-72 bg-primary overflow-hidden rounded-full shadow-md mb-4">
+              <div className="w-28 h-28 sm:w-40 sm:h-40 md:w-60 md:h-60 lg:w-72 lg:h-72 bg-primary  overflow-hidden rounded-full shadow-md mb-4">
                 <img
                   src={category.img}
                   alt={category.alt}
