@@ -1,35 +1,5 @@
-// import React from "react";
-// import Coffee from "../assets/67fcd4c56b860fe106f68269_Black Coffee.avif";
-// const ListSection = () => {
-//   return (
-//     <div className="h-screen w-full bg-third-primary">
-//       <div className="text-primary">
-//         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-//           Find and Get
-//         </h1>
-//         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-//           {" "}
-//           What You Love
-//         </h1>
-//       </div>
-//       <div>
-//         <div className="w-64 h-96  border-2 border-black">
-//           <div className="bg-primary w-64 h-64 rounded-full flex justify-center items-center">
-//             <img src={Coffee} className="w-2xl h-2xl" alt="" />
-//           </div>
-//           <div>
-//             <h2>Coffee</h2>
-//           </div>
-//         </div>
-//         <div></div>
-//         <div></div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ListSection;
 import React from "react";
+import { motion } from "framer-motion";
 
 const categories = [
   {
@@ -54,15 +24,20 @@ const categories = [
 
 const ListSection = () => {
   return (
-    <section className="w-full h-screen bg-third-primary py-16 px-4 border-b border-gray-300">
+    <section className="w-full h-screen bg-third-primary py-16 px-4 border-b border-gray-300  overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-16">
         {/* Heading */}
         <div className="text-primary text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <motion.h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+            initial={{ scale: 3, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
             Find and Get
             <br className="hidden md:block" />
             What You Love
-          </h1>
+          </motion.h1>
         </div>
 
         {/* Categories */}

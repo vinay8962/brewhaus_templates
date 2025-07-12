@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import React from "react";
 
 const menuItems = [
@@ -33,14 +34,19 @@ const menuItems = [
 
 const LovedByLocals = () => {
   return (
-    <section className="w-full py-20 bg-[#f5edd3] border-b border-gray-200">
+    <section className="w-full py-20 bg-[#f5edd3] border-b border-gray-200 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center gap-10">
           {/* Section Heading */}
-          <div className="text-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl text-primary font-bold leading-tight">
+          <div className="text-center ">
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl text-primary font-bold leading-tight"
+              initial={{ scale: 3, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
               Loved by Locals
-            </h2>
+            </motion.h2>
             <p className="text-lg text-primary mt-2">
               Local go-to’s everyone loves — handpicked and always fresh.
             </p>

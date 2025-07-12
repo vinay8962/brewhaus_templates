@@ -5,6 +5,11 @@ import ListSection from "../Components/ListSection";
 import TickerSlider from "../Components/TickerSlider";
 import LovedByLocals from "../Components/LovedByLocals";
 import AboutSection from "../Components/AboutSection";
+import TestimonialsSection from "../Components/TestimonialsSection";
+import NearbyCafes from "../Components/NearbyCafes";
+import NewsSection from "../Components/NewsItems";
+import BannerSection from "../Components/BannerSection";
+import Footer from "../Components/Footer";
 
 const HomePage = () => {
   return (
@@ -12,10 +17,15 @@ const HomePage = () => {
       <Navbar />
       <HeroSection />
       <TickerSlider />
-
       <ListSection />
       <LovedByLocals />
       <AboutSection />
+      <TestimonialsSection />
+      <NearbyCafes />
+      <NewsSection />
+      <BannerSection />
+      <TickerSlider />
+      <Footer />
     </div>
   );
 };

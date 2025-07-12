@@ -1,37 +1,34 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/67fccb954e77c661a593dbd5_Symbol.svg";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll blur
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Variants for hamburger
-  const topLineVariants = {
-    closed: { rotate: 0, y: 0 },
-    open: { rotate: 45, y: 6 },
-  };
-  const middleLineVariants = {
-    closed: { opacity: 1 },
-    open: { opacity: 0 },
-  };
-  const bottomLineVariants = {
-    closed: { rotate: 0, y: 0 },
-    open: { rotate: -45, y: -6 },
+  const menuVariants = {
+    open: {
+      opacity: 1,
+      scaleY: 1,
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
+    closed: {
+      opacity: 0,
+      scaleY: 0,
+      transition: { duration: 0.3, ease: "easeIn" },
+    },
   };
 
-  const mobileMenuVariants = {
-    closed: { opacity: 0, height: 0 },
-    open: { opacity: 1, height: "auto" },
+  const lineVariants = {
+    closed: { rotate: 0, y: 0 },
+    openTop: { rotate: 45, y: 6 },
+    openBottom: { rotate: -45, y: -6 },
   };
 
   return (
@@ -78,21 +75,29 @@ const Navbar = () => {
           >
             <motion.div
               className="w-8 h-8 flex flex-col justify-center items-center gap-[6px]"
-              initial="closed"
               animate={isOpen ? "open" : "closed"}
               transition={{ duration: 0.3 }}
             >
               <motion.span
                 className="w-6 h-0.5 bg-primary rounded origin-center"
-                variants={topLineVariants}
+                variants={{
+                  closed: lineVariants.closed,
+                  open: lineVariants.openTop,
+                }}
               />
               <motion.span
                 className="w-6 h-0.5 bg-primary rounded"
-                variants={middleLineVariants}
+                variants={{
+                  closed: { opacity: 1 },
+                  open: { opacity: 0 },
+                }}
               />
               <motion.span
                 className="w-6 h-0.5 bg-primary rounded origin-center"
-                variants={bottomLineVariants}
+                variants={{
+                  closed: lineVariants.closed,
+                  open: lineVariants.openBottom,
+                }}
               />
             </motion.div>
           </li>
@@ -100,18 +105,30 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <motion.ul
-        className="flex flex-col sm:hidden items-center bg-primary text-second-primary w-11/12 rounded-b-2xl overflow-hidden mt-20 z-40"
-        initial="closed"
-        animate={isOpen ? "open" : "closed"}
-        variants={mobileMenuVariants}
-        transition={{ duration: 0.3 }}
-      >
-        <li className="py-2 hover:underline cursor-pointer">Menu</li>
-        <li className="py-2 hover:underline cursor-pointer">Locations</li>
-        <li className="py-2 hover:underline cursor-pointer">About</li>
-        <li className="py-2 hover:underline cursor-pointer">News</li>
-      </motion.ul>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.ul
+            className="fixed top-20 w-11/12 sm:hidden bg-primary text-second-primary rounded-2xl z-40 origin-top"
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={menuVariants}
+          >
+            <li className="py-3 text-center hover:underline cursor-pointer">
+              Menu
+            </li>
+            <li className="py-3 text-center hover:underline cursor-pointer">
+              Locations
+            </li>
+            <li className="py-3 text-center hover:underline cursor-pointer">
+              About
+            </li>
+            <li className="py-3 text-center hover:underline cursor-pointer">
+              News
+            </li>
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
