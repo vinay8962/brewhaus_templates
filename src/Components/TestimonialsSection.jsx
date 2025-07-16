@@ -1,14 +1,20 @@
+import { motion } from "motion/react";
 import React from "react";
 
 const TestimonialsSection = () => {
   return (
-    <section className="min-h-screen w-full px-4 md:px-24 lg:px-24 flex justify-center items-center bg-third-primary py-16">
+    <section className="min-h-screen w-full px-4 md:px-24 lg:px-24 flex justify-center items-center bg-third-primary py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Heading */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold text-primary mb-4 leading-tight">
+          <motion.h2
+            className="text-4xl md:text-6xl font-bold text-primary mb-4 leading-tight"
+            initial={{ scale: 3, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
             What People <br /> Love About Us
-          </h2>
+          </motion.h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 ">

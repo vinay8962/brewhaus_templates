@@ -14,7 +14,6 @@ import Footer from "../Components/Footer";
 const HomePage = () => {
   return (
     <div>
-      <Navbar />
       <HeroSection />
       <TickerSlider />
       <ListSection />
@@ -25,7 +24,6 @@ const HomePage = () => {
       <NewsSection />
       <BannerSection />
       <TickerSlider />
-      <Footer />
     </div>
   );
 };
